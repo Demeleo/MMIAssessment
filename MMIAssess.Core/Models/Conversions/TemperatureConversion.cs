@@ -14,10 +14,10 @@ namespace MMIAssess.Core.Models.Conversions
             AddUnits(new CelciusUOM { Type = this.Type, Value = 0 });
         }
 
-        public override IConversionResult DoConversion(IUnitOfMeasure fromUnit, IUnitOfMeasure toUnit, decimal value)
+        public override IConversionResult DoConversion(string fromUnitDesc, string toUnitDesc, decimal value)
         {
-            base.DoConversion(fromUnit, toUnit, value);
-            return fromUnit.ConvertTo(value, toUnit);
+            base.DoConversion(fromUnitDesc, toUnitDesc, value);
+            return FromUnit.ConvertTo(value, ToUnit);
         }
     }
 }

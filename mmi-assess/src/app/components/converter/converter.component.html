@@ -1,0 +1,23 @@
+  <div fxLayout="row" fxLayoutWrap fxLayoutGap="0" fxLayoutAlign="center" class="converter-card">
+    <mat-card class="system-info-card mat-card">
+      <mat-card-content _ngcontent-c16="" class="mat-card-content">
+        <div class="d-flex no-block">
+          <div class="stats">
+            <mat-select>
+              <mat-option *ngFor="let bank of filteredBanks | async">
+                {{bank.name}}
+              </mat-option>
+            </mat-select>
+            <h6 class="text-white m-t-0">Active Time</h6>
+            <button mat-raised-button="" class="mat-raised-button" (click)="convert($event, 'administrator')"><span
+                class="mat-button-wrapper">Login</span>
+              <div class="mat-button-ripple mat-ripple" matripple=""></div>
+              <div class="mat-button-focus-overlay"></div>
+            </button>
+          </div>
+          <div class="stats-icon text-right ml-auto"><i class="fa fa-twitter display-5 op-3 text-white"></i></div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

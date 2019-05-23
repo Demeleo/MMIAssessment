@@ -4,6 +4,6 @@ namespace MMIAssess.Core.Interfaces
 {
     public interface IConversionRequest
     {
-        IConversionResult Convert(Conversion conversionPacket);
+        IConversionResult Convert();
     }
 }

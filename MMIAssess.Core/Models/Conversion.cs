@@ -14,6 +14,9 @@ namespace MMIAssess.Core.Models
         }
 
         public ConversionType Type { get; protected set; }
+        public IUnitOfMeasure FromUnit { get; protected set; }
+        public IUnitOfMeasure ToUnit { get; protected set; }
+
         public decimal Value { get; set; }
 
         public void AddUnits(params IUnitOfMeasure[] units)
@@ -21,14 +24,24 @@ namespace MMIAssess.Core.Models
             unitsOfMeasure.AddRange(units);
         }
 
-        public virtual IConversionResult DoConversion(IUnitOfMeasure fromUnit, IUnitOfMeasure toUnit, decimal value)
+        public virtual IConversionResult DoConversion(string fromUnitDesc, string toUnitDesc, decimal value)
         {
-            if (Type != fromUnit.GetUnitConversionType() || Type != toUnit.GetUnitConversionType())
+            FromUnit = GetUnitByDescription(fromUnitDesc);
+            ToUnit = GetUnitByDescription(toUnitDesc);
+
+            if (FromUnit == null || ToUnit == null || Type != FromUnit.GetUnitConversionType() || Type != ToUnit.GetUnitConversionType())
             {
-                throw new IncompatibleConversionException(this.Type.ToString(), fromUnit.GetUnitDescription(), toUnit.GetUnitDescription());
+                throw new IncompatibleConversionException(this.Type.ToString(), FromUnit.GetUnitDescription(), ToUnit.GetUnitDescription());
             }
 
             return null;
+        }
+
+        public IUnitOfMeasure GetUnitByDescription(string unitDescription)
+        {
+            return unitsOfMeasure.Find((unit) => {
+                return unit.GetUnitDescription().ToLower() == unitDescription.ToLower();
+            });
         }
     }
 }
