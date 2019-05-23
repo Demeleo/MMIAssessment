@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IConversion } from 'src/app/models/conversion.interface';
+import { IUnitOfMeasure } from 'src/app/models/unit-of-measure.interface';
 
 @Component({
   selector: 'app-converter',
@@ -8,7 +9,7 @@ import { IConversion } from 'src/app/models/conversion.interface';
 })
 export class ConverterComponent implements OnInit {
 
-  private conversion: IConversion[] = [
+  private conversions: IConversion[] = [
     {
       type: 'temperature', unitsOfMeasure: [
         { type: 'temperature', description: 'Kelvin' },
@@ -40,8 +41,12 @@ export class ConverterComponent implements OnInit {
         { type: 'speed', description: 'mph' }
       ]
     }
-  ]
+  ];
 
+  selected: IConversion = this.conversions[0];
+  toUnit: IUnitOfMeasure = this.selected.unitsOfMeasure[0];
+  fromUnit: IUnitOfMeasure = this.selected.unitsOfMeasure[0];
+  
   ngOnInit() {
   }
 

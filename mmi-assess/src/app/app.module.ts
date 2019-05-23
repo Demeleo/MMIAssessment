@@ -11,6 +11,7 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,7 +39,8 @@ import { LoginComponent } from './components/login/login.component';
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

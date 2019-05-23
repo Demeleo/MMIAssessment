@@ -3,14 +3,23 @@
       <mat-card-content _ngcontent-c16="" class="mat-card-content">
         <div class="d-flex no-block">
           <div class="stats">
-            <mat-select>
-              <mat-option *ngFor="let bank of filteredBanks | async">
-                {{bank.name}}
+            <mat-select [(value)]="selected">
+              <mat-option *ngFor="let conversion of conversions" class="conversion-select">
+                {{conversion.type}}
               </mat-option>
             </mat-select>
-            <h6 class="text-white m-t-0">Active Time</h6>
+            <mat-select [(value)]="fromUnit">
+              <mat-option *ngFor="let unit of selected.unitsOfMeasure" class="conversion-select">
+                {{unit.description}}
+              </mat-option>
+            </mat-select>
+            <mat-select [(value)]="toUnit">
+              <mat-option *ngFor="let unit of selected.unitsOfMeasure" class="conversion-select">
+                {{unit.description}}
+              </mat-option>
+            </mat-select>
             <button mat-raised-button="" class="mat-raised-button" (click)="convert($event, 'administrator')"><span
-                class="mat-button-wrapper">Login</span>
+                class="mat-button-wrapper">Convert</span>
               <div class="mat-button-ripple mat-ripple" matripple=""></div>
               <div class="mat-button-focus-overlay"></div>
             </button>
