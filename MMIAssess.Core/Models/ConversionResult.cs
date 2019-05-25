@@ -1,4 +1,5 @@
 ﻿using MMIAssess.Core.Interfaces;
+using MMIAssess.Core.Shared;
 
 namespace MMIAssess.Core.Models
 {
@@ -10,8 +11,9 @@ namespace MMIAssess.Core.Models
         public string ToSymbol { get; set; }
         public decimal FromValue { get; set; }
         public decimal ConvertedResult { get; set; }
+        public string ConversionType { get; set; }
 
-        public ConversionResult(IUnitOfMeasure fromUnit, IUnitOfMeasure toUnit, decimal fromValue, decimal conversionResult)
+        public ConversionResult(ConversionType type, IUnitOfMeasure fromUnit, IUnitOfMeasure toUnit, decimal fromValue, decimal conversionResult)
         {
             FromDescription = fromUnit.GetUnitDescription();
             ToDescription = toUnit.GetUnitDescription();
@@ -19,6 +21,7 @@ namespace MMIAssess.Core.Models
             ToSymbol = toUnit.GetSymbol();
             FromValue = fromValue;
             ConvertedResult = conversionResult;
+            ConversionType = type.ToString();
         }
 
         public void SetConvertedValue(decimal value)

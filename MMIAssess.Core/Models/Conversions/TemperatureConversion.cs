@@ -9,15 +9,9 @@ namespace MMIAssess.Core.Models.Conversions
         public TemperatureConversion()
         {
             Type = Shared.ConversionType.Temperature;
-            AddUnits(new KelvinUOM { Type = this.Type, Value = 0});
-            AddUnits(new FahrenheitUOM { Type = this.Type, Value = 0 });
-            AddUnits(new CelciusUOM { Type = this.Type, Value = 0 });
-        }
-
-        public override IConversionResult DoConversion(string fromUnitDesc, string toUnitDesc, decimal value)
-        {
-            base.DoConversion(fromUnitDesc, toUnitDesc, value);
-            return FromUnit.ConvertTo(value, ToUnit);
+            AddUnits(new KelvinUOM { Type = this.Type});
+            AddUnits(new FahrenheitUOM { Type = this.Type});
+            AddUnits(new CelciusUOM { Type = this.Type });
         }
     }
 }

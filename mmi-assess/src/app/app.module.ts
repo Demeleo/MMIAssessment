@@ -1,9 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -19,6 +21,7 @@ import { ConverterComponent } from './components/converter/converter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -40,9 +43,11 @@ import { LoginComponent } from './components/login/login.component';
     MatInputModule,
     MatToolbarModule,
     MatSelectModule,
+    MatDividerModule,
+    FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

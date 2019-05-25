@@ -1,10 +1,40 @@
-.converter-card{
-    width: 60%;
+.converter-wrapper{
+
+    position: relative;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
 }
 
-.conversion-select{
-    width: 350px;
+.converter-main{
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    position: relative;
+    width: 500px;
+    margin: 5% auto;
+    padding: 50px;
 }
-.stats{
-    width: 700px;
+
+.conversion{
+    width: 100%;
+    height: 40px;
+}
+
+.unit-from{
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 40px;
+}
+
+.from-input{
+    width: 95%;
+    height: 40px;
+}
+
+.to-input{
+    width: 45%;
+    height: 40px;
 }

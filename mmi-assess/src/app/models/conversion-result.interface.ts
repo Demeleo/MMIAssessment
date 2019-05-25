@@ -1,9 +1,10 @@
 export interface IConversionResult{
-    convertedResult: number;
+    conversionType: string
     fromDescription: string;
     toDescription: string;
     fromSymbol: string;
     toSymbol: string;
-    conversionType: string;
+    fromValue: number
+    convertedResult: number;
 }
 

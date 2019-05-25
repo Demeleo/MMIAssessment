@@ -1,32 +1,49 @@
-  <div fxLayout="row" fxLayoutWrap fxLayoutGap="0" fxLayoutAlign="center" class="converter-card">
-    <mat-card class="system-info-card mat-card">
-      <mat-card-content _ngcontent-c16="" class="mat-card-content">
-        <div class="d-flex no-block">
-          <div class="stats">
-            <mat-select [(value)]="selected">
-              <mat-option *ngFor="let conversion of conversions" class="conversion-select">
-                {{conversion.type}}
-              </mat-option>
-            </mat-select>
-            <mat-select [(value)]="fromUnit">
-              <mat-option *ngFor="let unit of selected.unitsOfMeasure" class="conversion-select">
-                {{unit.description}}
-              </mat-option>
-            </mat-select>
-            <mat-select [(value)]="toUnit">
-              <mat-option *ngFor="let unit of selected.unitsOfMeasure" class="conversion-select">
-                {{unit.description}}
-              </mat-option>
-            </mat-select>
-            <button mat-raised-button="" class="mat-raised-button" (click)="convert($event, 'administrator')"><span
-                class="mat-button-wrapper">Convert</span>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
-            </button>
-          </div>
-          <div class="stats-icon text-right ml-auto"><i class="fa fa-twitter display-5 op-3 text-white"></i></div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+<div class="converter-wrapper">
+  <div class="converter-main">
+    <div class="conversion">
+      <mat-select class="mat-select" [(ngModel)]="selectedConversion">
+        <mat-option *ngFor="let conversion of conversionsDS" [value]="conversion" class="conversion-select">
+          {{conversion.type}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="conversion-units">
+      <div class="unit-from">
+        <input matInput type="number" placeholder="From" value="0" class="unit from-input" [(ngModel)]="fromValue">
+        <mat-select class="mat-select" [(ngModel)]="fromUnit">
+          <ng-container *ngIf="selectedConversion">
+            <mat-option *ngFor="let unitFrom of selectedConversion.unitsOfMeasure" [value]="unitFrom"
+              class="conversion-select">
+              {{unitFrom.description}}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="unit-to">
+        <input matInput type="number" placeholder="To" value="0" class="unit to-input" [(ngModel)]="toValue">
+        <mat-select class="mat-select" [(ngModel)]="toUnit">
+          <ng-container *ngIf="selectedConversion">
+            <mat-option *ngFor="let unitTo of selectedConversion.unitsOfMeasure" [value]="unitTo"
+              class="conversion-select">
+              {{unitTo.description}}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="conversion-action">
+      <button mat-raised-button="" class="mat-raised-button" (click)="convert()"><span
+          class="mat-button-wrapper">Convert</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="conversion-result">
+      <p>{{resultExpression}}</p>
+    </div>
   </div>
-  
+</div>

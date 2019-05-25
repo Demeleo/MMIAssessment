@@ -18,11 +18,5 @@ namespace MMIAssess.API.Controllers
         {
             return Ok(new ConversionRequest(type, from, to, value).Convert());
         }
-
-        [HttpGet("{type}")]
-        public ActionResult<string> Get(string type)
-        {
-            return Ok(type);
-        }
     }
 }

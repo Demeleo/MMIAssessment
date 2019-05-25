@@ -24,17 +24,17 @@ namespace MMIAssess.Core.Models
             unitsOfMeasure.AddRange(units);
         }
 
-        public virtual IConversionResult DoConversion(string fromUnitDesc, string toUnitDesc, decimal value)
+        public IConversionResult DoConversion(string fromUnitDesc, string toUnitDesc, decimal value)
         {
             FromUnit = GetUnitByDescription(fromUnitDesc);
             ToUnit = GetUnitByDescription(toUnitDesc);
 
             if (FromUnit == null || ToUnit == null || Type != FromUnit.GetUnitConversionType() || Type != ToUnit.GetUnitConversionType())
             {
-                throw new IncompatibleConversionException(this.Type.ToString(), FromUnit.GetUnitDescription(), ToUnit.GetUnitDescription());
+                throw new IncompatibleConversionException(this.Type.ToString(), fromUnitDesc, toUnitDesc);
             }
 
-            return null;
+            return FromUnit.ConvertTo(value, ToUnit);
         }
 
         public IUnitOfMeasure GetUnitByDescription(string unitDescription)
