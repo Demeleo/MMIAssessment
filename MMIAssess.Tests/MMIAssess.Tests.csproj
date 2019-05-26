@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ProjectGuid>{F1C37D48-20DD-4AC5-8350-B259BA8336CE}</ProjectGuid>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MMIAssess.API\MMIAssess.API.csproj" />
+    <ProjectReference Include="..\MMIAssess.Core\MMIAssess.Core.csproj" />
+    <ProjectReference Include="..\MMIAssess.Infrastructure\MMIAssess.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
