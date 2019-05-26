@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  ng_mmi_dev:
+    build:
+      context: ./mmi-assess
+      dockerfile: Dockerfile
+    container_name: mmi_frontend_container
+    volumes:
+      - "./src:/app/src"
+    environment:
+      ENV: 'development'
+      CHROME_BIN: '/usr/bin/chromium-browser'
+      CHROME_PATH: '/usr/lib/chromium/'
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 1
+    ports:
+      - 3001:4200
+    networks:
+      - frontend
+  mmi_api_dev:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: mmi_api_container
+    environment:
+      ENV: 'development'
+    ports:
+      - 80:52626
+      - 443:44344
+    networks:
+      - frontend
+      - backend
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

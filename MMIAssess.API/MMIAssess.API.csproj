@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ProjectGuid>{51AC0833-BAD5-42CF-8A08-04BDB4E3DB85}</ProjectGuid>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <UserSecretsId>6ee54449-4e9e-4a6f-9fbc-8d7058bebed6</UserSecretsId>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
