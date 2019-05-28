@@ -20,7 +20,13 @@ Project Makeup
   
       //apiURL = 'http://localhost:3004/api';//use for docker
       apiURL = 'https://localhost:44344/api';//use for dev
-      
+  
+  root folder also holds kubernetes kompose yaml files and you can use command: 
+  
+  kubectl apply -f ng-mmi-dev-service.yaml,mmi-api-dev-service.yaml,ng-mmi-dev-deployment.yaml,mmi-api-dev-deployment.yaml
+  
+  to push docker images to Kubernetes environment.
+  
  containers-deploy.sh - to deploy to Minikube run this bash script. you will need to change the minicube start command params to fit your env ---
                         this was not tested. my local machine did not have enough memory to run docker and minicube at the same time.
   
