@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: mmi_frontend_container
     volumes:
-      - "./src:/app/src"
+      - "./mmi-assess/src:/app/src"
     environment:
       ENV: 'development'
       CHROME_BIN: '/usr/bin/chromium-browser'
@@ -27,6 +27,7 @@ services:
     ports:
       - 3002:52626
       - 3003:44344
+      - 3004:80
     networks:
       - frontend
       - backend
