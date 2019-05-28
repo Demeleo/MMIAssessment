@@ -7,8 +7,8 @@ import { IConversionResult } from '../models/conversion-result.interface';
   providedIn: 'root'
 })
 export class ApiService {
-
-  apiURL = 'http://localhost:3004/api';
+  apiURL = 'http://localhost:3004/api';//use for docker
+  //apiURL = 'https://localhost:44344/api';//use for dev
 
   constructor(private httpClient: HttpClient) { }
 
