@@ -70,18 +70,25 @@
     float: left;
     width: 50%;
     height: 40px;
+
+    .mat-form-field {
+        width: 95%;
+    }
+}
+
+.unit-to{
+    .mat-form-field{
+       width: 45%;
+    }
 }
 
 .from-input{
-    width: 95%;
     height: 40px;
-    margin-bottom: 10px;
 }
 
 .to-input{
     width: 45%;
     height: 40px;
-    margin-bottom: 10px;
 }
 
 .mat-select-from{
