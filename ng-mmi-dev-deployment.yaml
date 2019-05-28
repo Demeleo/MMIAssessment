@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: ng-mmi-dev
+  name: ng-mmi-dev
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: ng-mmi-dev
+    spec:
+      containers:
+      - env:
+        - name: CHROME_BIN
+          value: /usr/bin/chromium-browser
+        - name: CHROME_PATH
+          value: /usr/lib/chromium/
+        - name: ENV
+          value: development
+        - name: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+          value: "1"
+        image: ng-mmi-dev
+        name: mmi-frontend-container
+        ports:
+        - containerPort: 4200
+        resources: {}
+      restartPolicy: Always
+status: {}
