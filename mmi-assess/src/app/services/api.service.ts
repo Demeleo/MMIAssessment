@@ -7,8 +7,8 @@ import { IConversionResult } from '../models/conversion-result.interface';
   providedIn: 'root'
 })
 export class ApiService {
-  
-  apiURL: string = 'http://localhost:3004/api';
+
+  apiURL = 'http://localhost:3004/api';
 
   constructor(private httpClient: HttpClient) { }
 

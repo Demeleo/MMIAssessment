@@ -1,5 +1,5 @@
 
-export interface IUnitOfMeasure{
+export interface IUnitOfMeasure {
     type: string;
     description: string;
 }
