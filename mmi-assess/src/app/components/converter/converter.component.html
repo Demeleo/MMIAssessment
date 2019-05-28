@@ -7,11 +7,10 @@
         </mat-option>
       </mat-select>
     </div>
-    <mat-divider></mat-divider>
     <div class="conversion-units">
       <div class="unit-from">
         <input matInput type="number" placeholder="From" value="0" class="unit from-input" [(ngModel)]="fromValue">
-        <mat-select class="mat-select" [(ngModel)]="fromUnit">
+        <mat-select class="mat-select-from" [(ngModel)]="fromUnit">
           <ng-container *ngIf="selectedConversion">
             <mat-option *ngFor="let unitFrom of selectedConversion.unitsOfMeasure" [value]="unitFrom"
               class="conversion-select">
@@ -20,10 +19,9 @@
           </ng-container>
         </mat-select>
       </div>
-      <mat-divider [vertical]="true"></mat-divider>
       <div class="unit-to">
         <input matInput type="number" placeholder="To" value="0" class="unit to-input" [(ngModel)]="toValue">
-        <mat-select class="mat-select" [(ngModel)]="toUnit">
+        <mat-select class="mat-select-to" [(ngModel)]="toUnit">
           <ng-container *ngIf="selectedConversion">
             <mat-option *ngFor="let unitTo of selectedConversion.unitsOfMeasure" [value]="unitTo"
               class="conversion-select">
@@ -33,7 +31,6 @@
         </mat-select>
       </div>
     </div>
-    <mat-divider></mat-divider>
     <div class="conversion-action">
       <button mat-raised-button="" class="mat-raised-button" (click)="convert()"><span
           class="mat-button-wrapper">Convert</span>
@@ -41,7 +38,6 @@
         <div class="mat-button-focus-overlay"></div>
       </button>
     </div>
-    <mat-divider></mat-divider>
     <div class="conversion-result">
       <p>{{resultExpression}}</p>
     </div>

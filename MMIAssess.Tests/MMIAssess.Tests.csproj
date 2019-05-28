@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ProjectGuid>{F1C37D48-20DD-4AC5-8350-B259BA8336CE}</ProjectGuid>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

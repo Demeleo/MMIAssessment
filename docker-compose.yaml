@@ -19,14 +19,14 @@ services:
       - frontend
   mmi_api_dev:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     container_name: mmi_api_container
     environment:
       ENV: 'development'
     ports:
-      - 80:52626
-      - 443:44344
+      - 3002:52626
+      - 3003:44344
     networks:
       - frontend
       - backend

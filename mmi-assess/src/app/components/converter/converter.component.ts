@@ -59,7 +59,7 @@ export class ConverterComponent implements OnInit {
 
     this.selectedConversion = this.conversionsDS[0];
     this.toUnit = this.selectedConversion.unitsOfMeasure[0];
-    this.fromUnit = this.selectedConversion.unitsOfMeasure[0];
+    this.fromUnit = this.selectedConversion.unitsOfMeasure[1];
   }
 
   ngOnInit() {
