@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {
@@ -10,6 +10,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatSelectModule,
+  MatSnackBarModule,
   MatToolbarModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +24,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { ApiService } from './services/api.service';
 import { DataService } from './services/data.service';
+import { NotificationService } from './services/notification.service';
+import { GlobalErrorHandler } from './utilities/global-errorhandler';
+import { ServerErrorInterceptor } from './utilities/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -45,10 +49,17 @@ import { DataService } from './services/data.service';
     MatToolbarModule,
     MatSelectModule,
     MatDividerModule,
+    MatSnackBarModule,
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ApiService, DataService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    NotificationService,
+    ApiService,
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
