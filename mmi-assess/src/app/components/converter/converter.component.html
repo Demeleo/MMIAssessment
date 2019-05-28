@@ -11,7 +11,7 @@
       <div class="unit-from">
       <mat-form-field>
         <input matInput type="number" placeholder="From" value="0" class="unit from-input" [(ngModel)]="fromValue">
-  </mat-form-field>
+      </mat-form-field>
         <mat-select class="mat-select-from" [(ngModel)]="fromUnit">
           <ng-container *ngIf="selectedConversion">
             <mat-option *ngFor="let unitFrom of selectedConversion.unitsOfMeasure" [value]="unitFrom"

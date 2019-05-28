@@ -11,24 +11,31 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./converter.component.scss']
 })
 export class ConverterComponent implements OnInit {
+
+  constructor(private apiService: ApiService, private dataService: DataService) {
+    this.initialiseDataSource();
+  }
+
+  public get selectedConversion(): IConversion { return this._selectedConversion; }
+  public set selectedConversion(newValue: IConversion) {
+    // logic
+    this._selectedConversion = newValue;
+    this.toUnit = this._selectedConversion.unitsOfMeasure[0];
+    this.fromUnit = this._selectedConversion.unitsOfMeasure[1];
+  }
   conversionsDS: IConversion[] = [];
-  selectedConversion: IConversion;
   toUnit: IUnitOfMeasure;
   fromUnit: IUnitOfMeasure;
   fromValue = 0;
   toValue = 0;
   conversionResult: IConversionResult;
   resultExpression: string;
-
-  constructor(private apiService: ApiService, private dataService: DataService) {
-    this.initialiseDataSource();
-  }
+  private _selectedConversion: IConversion;
 
   initialiseDataSource() {
     this.conversionsDS = this.dataService.getConversionData();
     this.selectedConversion = this.conversionsDS[0];
-    this.toUnit = this.selectedConversion.unitsOfMeasure[0];
-    this.fromUnit = this.selectedConversion.unitsOfMeasure[1];
+
   }
 
   ngOnInit() {
