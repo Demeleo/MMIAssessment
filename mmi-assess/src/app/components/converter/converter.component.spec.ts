@@ -1,25 +1,51 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApiService } from 'src/app/services/api.service';
+import { DataService } from 'src/app/services/data.service';
 
-import { FooterComponent } from './converter.component';
+import { ConverterComponent } from './converter.component';
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+
+describe('ConverterComponent', () => {
+  let component: ConverterComponent;
+  let fixture: ComponentFixture<ConverterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [
+        ConverterComponent
+      ],
+      imports: [
+        HttpClientModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        FormsModule,
+        BrowserAnimationsModule
+      ],
+      providers: [ApiService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(ConverterComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should call 'initialiseDataSource' on create`, () => {
+    const data = TestBed.get(DataService);
+    const api = TestBed.get(ApiService);
+    spyOn(data, 'getConversionData');
+    const mock = new ConverterComponent(api, data);
+    expect(data.getConversionData).toHaveBeenCalled();
   });
 });

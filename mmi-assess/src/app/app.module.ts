@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { ApiService } from './services/api.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { ApiService } from './services/api.service';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { IConversionResult } from 'src/app/models/conversion-result.interface';
 import { IConversion } from 'src/app/models/conversion.interface';
 import { IUnitOfMeasure } from 'src/app/models/unit-of-measure.interface';
 import { ApiService } from 'src/app/services/api.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-converter',
@@ -19,44 +20,12 @@ export class ConverterComponent implements OnInit {
   conversionResult: IConversionResult;
   resultExpression: string;
 
-  constructor(private apiService: ApiService) { this.initialiseDataSource(); }
+  constructor(private apiService: ApiService, private dataService: DataService) {
+    this.initialiseDataSource();
+  }
 
   initialiseDataSource() {
-
-    this.conversionsDS = [
-      {
-        type: 'temperature', unitsOfMeasure: [
-          { type: 'temperature', description: 'Kelvin' },
-          { type: 'temperature', description: 'Fahrenheit' },
-          { type: 'temperature', description: 'Celsius' }
-        ]
-      },
-      {
-        type: 'volume', unitsOfMeasure: [
-          { type: 'volume', description: 'litre' },
-          { type: 'volume', description: 'gallon' }
-        ]
-      },
-      {
-        type: 'mass', unitsOfMeasure: [
-          { type: 'mass', description: 'kilogram' },
-          { type: 'mass', description: 'pound' }
-        ]
-      },
-      {
-        type: 'length', unitsOfMeasure: [
-          { type: 'length', description: 'kilometer' },
-          { type: 'length', description: 'mile' }
-        ]
-      },
-      {
-        type: 'speed', unitsOfMeasure: [
-          { type: 'speed', description: 'kmph' },
-          { type: 'speed', description: 'mph' }
-        ]
-      }
-    ];
-
+    this.conversionsDS = this.dataService.getConversionData();
     this.selectedConversion = this.conversionsDS[0];
     this.toUnit = this.selectedConversion.unitsOfMeasure[0];
     this.fromUnit = this.selectedConversion.unitsOfMeasure[1];
