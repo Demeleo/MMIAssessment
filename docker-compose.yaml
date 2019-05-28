@@ -1,11 +1,12 @@
 version: '3'
 
 services:
-  ng_mmi_dev:
+  ng-mmi-dev:
+    image: ng-mmi-dev
     build:
       context: ./mmi-assess
       dockerfile: Dockerfile
-    container_name: mmi_frontend_container
+    container_name: mmi-frontend-container
     volumes:
       - "./mmi-assess/src:/app/src"
     environment:
@@ -17,11 +18,12 @@ services:
       - 3001:4200
     networks:
       - frontend
-  mmi_api_dev:
+  mmi-api-dev:
+    image: mmi-api-dev
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mmi_api_container
+    container_name: mmi-api-container
     environment:
       ENV: 'development'
     ports:
