@@ -14,8 +14,8 @@ namespace MMIAssess.Core.Models
         }
 
         public ConversionType Type { get; protected set; }
-        public IUnitOfMeasure FromUnit { get; protected set; }
-        public IUnitOfMeasure ToUnit { get; protected set; }
+        private string _fromUnitDesc;
+        private string _toUnitDesc;
 
         public decimal Value { get; set; }
 
@@ -26,15 +26,19 @@ namespace MMIAssess.Core.Models
 
         public IConversionResult DoConversion(string fromUnitDesc, string toUnitDesc, decimal value)
         {
-            FromUnit = GetUnitByDescription(fromUnitDesc);
-            ToUnit = GetUnitByDescription(toUnitDesc);
+            _fromUnitDesc = fromUnitDesc;
+            _toUnitDesc = toUnitDesc;
+            return DoConversion(GetUnitByDescription(_fromUnitDesc), GetUnitByDescription(_toUnitDesc), value);
+        }
 
-            if (FromUnit == null || ToUnit == null || Type != FromUnit.GetUnitConversionType() || Type != ToUnit.GetUnitConversionType())
+        public IConversionResult DoConversion(IUnitOfMeasure fromUnit, IUnitOfMeasure toUnit, decimal value)
+        {
+            if (fromUnit == null || toUnit == null || Type != fromUnit.GetUnitConversionType() || Type != toUnit.GetUnitConversionType())
             {
-                throw new IncompatibleConversionException(this.Type.ToString(), fromUnitDesc, toUnitDesc);
+                throw new IncompatibleConversionException(this.Type.ToString(), _fromUnitDesc, _toUnitDesc);
             }
 
-            return FromUnit.ConvertTo(value, ToUnit);
+            return fromUnit.ConvertTo(value, toUnit);
         }
 
         public IUnitOfMeasure GetUnitByDescription(string unitDescription)
