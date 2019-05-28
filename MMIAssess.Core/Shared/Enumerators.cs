@@ -4,5 +4,5 @@ using System.Text;
 
 namespace MMIAssess.Core.Shared
 {
-    public enum ConversionType { Temperature, Length, Speed, Mass, Area }
+    public enum ConversionType { Temperature, Length, Speed, Mass, Volume }
 }

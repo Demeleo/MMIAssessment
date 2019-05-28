@@ -41,10 +41,10 @@ describe('ConverterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should call 'initialiseDataSource' on create`, () => {
+  it(`should call data service 'getConversionData' on create`, () => {
     const data = TestBed.get(DataService);
     const api = TestBed.get(ApiService);
-    spyOn(data, 'getConversionData');
+    spyOn(data, 'getConversionData').and.callThrough();
     const mock = new ConverterComponent(api, data);
     expect(data.getConversionData).toHaveBeenCalled();
   });

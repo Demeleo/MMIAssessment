@@ -1,4 +1,5 @@
-﻿using MMIAssess.Core.Interfaces;
+﻿using MMIAssess.Core.Exceptions;
+using MMIAssess.Core.Interfaces;
 using MMIAssess.Core.Models.Conversions;
 using MMIAssess.Core.Shared;
 using System;
@@ -15,8 +16,16 @@ namespace MMIAssess.Core.Factories
             {
                 case "temperature":
                     return new TemperatureConversion();
+                case "length":
+                    return new LengthConversion();
+                case "volume":
+                    return new VolumeConversion();
+                case "mass":
+                    return new MassConversion();
+                case "speed":
+                    return new SpeedConversion();
                 default:
-                    return new TemperatureConversion();
+                    throw new ConversionNotFoundException(type);
             }
         }
     }

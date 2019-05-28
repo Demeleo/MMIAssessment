@@ -1,5 +1,4 @@
 ﻿
-using MMIAssess.Core.Interfaces;
 using MMIAssess.Core.Models.UnitsOfMeasure;
 
 namespace MMIAssess.Core.Models.Conversions

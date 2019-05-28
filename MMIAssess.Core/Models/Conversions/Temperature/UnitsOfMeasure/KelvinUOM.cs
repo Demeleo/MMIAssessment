@@ -1,7 +1,4 @@
 ﻿using MMIAssess.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MMIAssess.Core.Models.UnitsOfMeasure
 {
